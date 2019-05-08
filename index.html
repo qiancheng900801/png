@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="file" name="file" onchange="showPreview(this)" />
+    <img id="portrait" src="" width="70" height="75">
+    <script type="text/javascript">
+        function showPreview(source) {
+            var file = source.files[0];
+            if (window.FileReader) {
+                var fr = new FileReader();
+                fr.onloadend = function (e) {
+                    document.getElementById("portrait").src = e.target.result;
+                };
+                fr.readAsDataURL(file); //也是利用将图片作为url读出
+            }
+        }
+    </script>
+</body>
+
+</html>
